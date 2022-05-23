@@ -1,0 +1,16 @@
+{
+    "elements": {
+        "l": {}
+    },
+    "attributes": {
+        "th:text": {
+            "context": "td"
+        },
+        "th:insert": {
+            "context": "div"
+        },
+        "th:each": {
+            "context": "tr"
+        }
+    }
+}
