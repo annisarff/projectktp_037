@@ -22,26 +22,35 @@ public class DataController {
     List<Data> newdata = new ArrayList<>();
     
     @RequestMapping("/main")
-    public String getMain(){
-        return "menu";
+    public String getMain(Model model){
+        int record = datactrl.getDataCount();
+//        String result =" ";
+        try{
+            newdata = datactrl.findDataEntities().subList(0, record);
+        }
+        catch(Exception e){
+//            result = e.getMessage();
+        }
+        model.addAttribute("goData", newdata);
+        model.addAttribute("record", record);
+        
+        return "database";
     }
     
     @RequestMapping("/data")
-    @ResponseBody
-    public String getDataKTP(Model model){
-//        int record = datactrl.getDataCount();
-//        String result="";
+     public String getDataKTP(Model model){
+        int record = datactrl.getDataCount();
+//        String result =" ";
         try{
-            newdata = datactrl.findDataEntities();//.subList(0, record);
+            newdata = datactrl.findDataEntities().subList(0, record);
         }
         catch(Exception e){
-//            result=e.getMessage();
+//            result = e.getMessage();
         }
         model.addAttribute("goData", newdata);
-//        model.addAttribute("record", record);
+        model.addAttribute("record", record);
         
         return "database";
-
     }
     
     @RequestMapping("/edit")

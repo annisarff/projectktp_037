@@ -14,26 +14,24 @@
     <body>
         <div align ="center">Database KTP Indonesia</div>
         <a href="/create">Data baru</a>
-        <a href="/search">Cari data</a>
-        <div class="table-responsive">
+        <div class="table-fluid">
             <table class="table table-striped-columns table align-middle">
                 <tr>
                     <th>NIK</th>
                     <th>Nama</th>
                     <th>Tanggal Lahir</th>
-                    <th>Alamat</th>
-                    <th>Action</th>
+                    <th>Foto</th>
+                    <th>Berlaku Hingga</th>
+                    
                 </tr>
                 <tr th:each="godata:${goData}">
-                        <td th:text="${godata.noktp}"></td>
+                        <td th:text="${godata.nik}"></td>
                         <td th:text="${godata.nama}"></td>
                         <td th:text="${#calendars.format(godata.tgllahir, 'dd-MMM-yyyy')}"></td>
-                        <td th:text="${godata.alamat}"></td>
-                        <td>
-                        <a href="/detil">Detil</a>
-                        <a href="/edit">Edit</a>
-                        <a href="/delete">Delete</a>
-                    </td>
+                        <td> <img th:src="@{${'/image?id='+ godata.id}}" alt="foto" width="200" height="300"> </td>
+                        <td th:text="${godata.berlaku}"></td>
+                        
+                      
                 </tr>
             </table>
         </div>

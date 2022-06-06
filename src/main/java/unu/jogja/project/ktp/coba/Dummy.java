@@ -2,15 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package unu.jogja.project.ktp;
+package unu.jogja.project.ktp.coba;
 
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
@@ -25,51 +23,40 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author ASUS
  */
 @Entity
-@Table(name = "data")
+@Table(name = "dummy")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Data.findAll", query = "SELECT d FROM Data d"),
-    @NamedQuery(name = "Data.findById", query = "SELECT d FROM Data d WHERE d.id = :id"),
-    @NamedQuery(name = "Data.findByNama", query = "SELECT d FROM Data d WHERE d.nama = :nama"),
-    @NamedQuery(name = "Data.findByTgllahir", query = "SELECT d FROM Data d WHERE d.tgllahir = :tgllahir"),
-    @NamedQuery(name = "Data.findByNik", query = "SELECT d FROM Data d WHERE d.nik = :nik"),
-    @NamedQuery(name = "Data.findByBerlaku", query = "SELECT d FROM Data d WHERE d.berlaku = :berlaku")})
-public class Data implements Serializable {
+    @NamedQuery(name = "Dummy.findAll", query = "SELECT d FROM Dummy d"),
+    @NamedQuery(name = "Dummy.findById", query = "SELECT d FROM Dummy d WHERE d.id = :id"),
+    @NamedQuery(name = "Dummy.findByNama", query = "SELECT d FROM Dummy d WHERE d.nama = :nama"),
+    @NamedQuery(name = "Dummy.findByTanggal", query = "SELECT d FROM Dummy d WHERE d.tanggal = :tanggal")})
+public class Dummy implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "ID")
+    @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
     @Column(name = "nama")
     private String nama;
-    @Basic(optional = false)
-    @Column(name = "tgllahir")
+    @Column(name = "tanggal")
     @Temporal(TemporalType.DATE)
-    private Date tgllahir;
-    @Basic(optional = false)
-    @Column(name = "nik")
-    private int nik;
+    private Date tanggal;
     @Lob
     @Column(name = "foto")
     private byte[] foto;
-    @Column(name = "berlaku")
-    private String berlaku;
 
-    public Data() {
+    public Dummy() {
     }
 
-    public Data(Integer id) {
+    public Dummy(Integer id) {
         this.id = id;
     }
 
-    public Data(Integer id, String nama, Date tgllahir, int nik) {
+    public Dummy(Integer id, String nama) {
         this.id = id;
         this.nama = nama;
-        this.tgllahir = tgllahir;
-        this.nik = nik;
     }
 
     public Integer getId() {
@@ -88,20 +75,12 @@ public class Data implements Serializable {
         this.nama = nama;
     }
 
-    public Date getTgllahir() {
-        return tgllahir;
+    public Date getTanggal() {
+        return tanggal;
     }
 
-    public void setTgllahir(Date tgllahir) {
-        this.tgllahir = tgllahir;
-    }
-
-    public int getNik() {
-        return nik;
-    }
-
-    public void setNik(int nik) {
-        this.nik = nik;
+    public void setTanggal(Date tanggal) {
+        this.tanggal = tanggal;
     }
 
     public byte[] getFoto() {
@@ -110,14 +89,6 @@ public class Data implements Serializable {
 
     public void setFoto(byte[] foto) {
         this.foto = foto;
-    }
-
-    public String getBerlaku() {
-        return berlaku;
-    }
-
-    public void setBerlaku(String berlaku) {
-        this.berlaku = berlaku;
     }
 
     @Override
@@ -130,10 +101,10 @@ public class Data implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Data)) {
+        if (!(object instanceof Dummy)) {
             return false;
         }
-        Data other = (Data) object;
+        Dummy other = (Dummy) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -142,7 +113,7 @@ public class Data implements Serializable {
 
     @Override
     public String toString() {
-        return "unu.jogja.project.ktp.Data[ id=" + id + " ]";
+        return "unu.jogja.project.ktp.coba.Dummy[ id=" + id + " ]";
     }
     
 }
